@@ -1,23 +1,22 @@
-import type { Metadata } from 'next'
-import Image from 'next/image'
-
-import './globals.css'
-import Link from 'next/link'
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'Virgin Atlantic | Front End Coding Test',
-  description: 'Created by Virgin Atlantic Digital Team',
-}
+  title: "Virgin Atlantic | Front End Coding Test",
+  description: "Created by Virgin Atlantic Digital Team",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body>
-        <header>
+        <header className="site-header">
           <div className={`wrapper`}>
             <Link href="/">
               <Image
@@ -33,5 +32,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }
