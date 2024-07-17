@@ -1,21 +1,10 @@
+import SearchListingComponent from "@/app/components/search-listing/search-listing.component";
 import { BookingResponse } from "@/types/booking";
-import { Rooms } from "@/utils/composition.service";
-import styles from "./search-results.module.css";
+import { SearchBody, SearchParams } from "@/types/search";
+import { useSearchBody } from "@/utils/hooks";
 
-async function getData(params: {
-  [key: string]: string | string[] | undefined;
-}) {
-  const body = {
-    bookingType: params.bookingType,
-    direct: false,
-    location: params.location,
-    departureDate: params.departureDate,
-    duration: params.duration,
-    gateway: params.gateway,
-    partyCompositions: Rooms.parseAndConvert([
-      params.partyCompositions as string,
-    ]),
-  };
+async function getData(body: SearchBody) {
+  console.log(body);
 
   const res = await fetch(
     "https://www.virginholidays.co.uk/cjs-search-api/search",
@@ -38,49 +27,10 @@ async function getData(params: {
 export default async function SearchResultsComponent({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: SearchParams;
 }) {
-  const results: BookingResponse = await getData(searchParams);
+  const body = useSearchBody(searchParams);
+  const { holidays }: BookingResponse = await getData(body);
 
-  const { holidays } = results;
-
-  if (!holidays.length) return <div>No results</div>;
-
-  return (
-    <section>
-      <h2>{holidays.length} results found</h2>
-
-      {/* <pre>{JSON.stringify(results, undefined, 2)}</pre> */}
-
-      <ol>
-        {holidays.map((holiday, idx: number) => {
-          return (
-            <li key={idx}>
-              <article className={styles.searchResults}>
-                <img
-                  src={holiday.hotel.content.images[0].RESULTS_CAROUSEL.url}
-                  alt={
-                    holiday.hotel.content.images[0].IMAGE_DESCRIPTION ??
-                    `Image of ${holiday.hotel.name}`
-                  }
-                />
-                <h1>
-                  {holiday.hotel.name} - {holiday.hotel.content.starRating} Star
-                </h1>
-                <h2>{holiday.hotel.boardBasis}</h2>
-                <ul>
-                  {holiday.hotel.content.atAGlance.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-                <h3>£{holiday.pricePerPerson}pp</h3>
-                <h4>Total price £{holiday.totalPrice}quid</h4>
-                <button>View details</button>
-              </article>
-            </li>
-          );
-        })}
-      </ol>
-    </section>
-  );
+  return <SearchListingComponent holidays={holidays} />;
 }
