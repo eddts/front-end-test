@@ -27,30 +27,32 @@ export const useHolidayFilter = (
 
   // Do filtering - this is incredibly simplistic and verbose, in reality would probably use something like fuse.js
   const filteredHolidays: Holiday[] = holidays.filter((holiday) => {
-    let include = true;
+    let include = [];
 
     if (filters.pricePerPerson.min !== null) {
-      include = holiday.pricePerPerson >= filters.pricePerPerson.min;
+      include.push(holiday.pricePerPerson >= filters.pricePerPerson.min);
     }
 
     if (filters.pricePerPerson.max !== null) {
-      include = holiday.pricePerPerson <= filters.pricePerPerson.max;
+      include.push(holiday.pricePerPerson <= filters.pricePerPerson.max);
     }
 
     // Candidate for refactor - cyclomatic complexity!!
     if (filters.hotelFacilities.length > 0) {
-      include = filters.hotelFacilities.every((item) =>
-        holiday.hotel.content.hotelFacilities.includes(item)
+      include.push(
+        filters.hotelFacilities.every((item) =>
+          holiday.hotel.content.hotelFacilities.includes(item)
+        )
       );
     }
 
     if (filters.starRating.length > 0) {
-      include = filters.starRating.includes(
-        `${holiday.hotel.content.starRating}`
+      include.push(
+        filters.starRating.includes(`${holiday.hotel.content.starRating}`)
       );
     }
 
-    return include;
+    return include.every(Boolean);
   });
 
   return { holidays: filteredHolidays, filters, setFilters, resetFilters };

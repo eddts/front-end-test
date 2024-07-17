@@ -29,14 +29,14 @@ export default function SearchFiltersComponent({
   const facilitiesFilters = useHotelFacilitiesFilters(holidays);
   const starRatingFilters = useHotelStarRatingFilters();
 
-  const onBlurPrice = useCallback(
+  const onChangePrice = useCallback(
     (e: FocusEvent<HTMLInputElement, Element>) => {
       setFilters((prevState) => {
         return {
           ...prevState,
           pricePerPerson: {
             ...prevState.pricePerPerson,
-            [e.target.name]: parseInt(e.target.value),
+            [e.target.name]: e.target.value ? parseInt(e.target.value) : null,
           },
         };
       });
@@ -77,11 +77,23 @@ export default function SearchFiltersComponent({
         <h2>Price per person</h2>
         <label className={styles.input} htmlFor="min">
           Min
-          <input name="min" id="min" type="number" onBlur={onBlurPrice} />
+          <input
+            name="min"
+            id="min"
+            type="number"
+            value={filters.pricePerPerson.min ?? ""}
+            onChange={onChangePrice}
+          />
         </label>
         <label className={styles.input} htmlFor="max">
           Max
-          <input name="max" id="max" type="number" onBlur={onBlurPrice} />
+          <input
+            name="max"
+            id="max"
+            type="number"
+            value={filters.pricePerPerson.max ?? ""}
+            onChange={onChangePrice}
+          />
         </label>
       </section>
 
@@ -94,14 +106,15 @@ export default function SearchFiltersComponent({
             className={styles.checkbox}
             htmlFor={filter.value}
           >
-            {filter.label}
             <input
               type="checkbox"
               name={filter.value}
               id={filter.value}
               value={filter.value}
+              checked={filters.starRating.includes(filter.value)}
               onChange={onCheckStarRating}
             />
+            {filter.label}
           </label>
         ))}
       </section>
@@ -115,14 +128,15 @@ export default function SearchFiltersComponent({
               className={styles.checkbox}
               htmlFor={filter.value}
             >
-              {filter.label}
               <input
                 type="checkbox"
                 name={filter.value}
                 id={filter.value}
                 value={filter.value}
+                checked={filters.hotelFacilities.includes(filter.value)}
                 onChange={onCheckHotelFacilities}
               />
+              {filter.label}
             </label>
           ))}
         </section>

@@ -33,7 +33,7 @@ export default function SearchListingComponent({
         </nav>
 
         <div>
-          {filteredHolidays.length > 1 ? (
+          {filteredHolidays.length > 0 ? (
             <ol className={styles.list}>
               {filteredHolidays.map((holiday, idx: number) => {
                 return (
