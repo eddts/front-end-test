@@ -1,3 +1,4 @@
+/* Would normally break this out into seperate stylesheets but sections will do as this is so small */
 @font-face {
   font-family: "Gotham, Gotham-Light";
   src: url("/fonts/gotham-light.woff2") format("truetype");
@@ -232,15 +233,6 @@ h6 {
   }
 }
 
-/* Stuff that should be in a component */
-
-.site-header {
-  background-color: var(--token-color-colour-background-primary);
-  box-shadow: inset 0px -1px 0px var(--token-color-colour-border-minimal);
-  padding: var(--space-s) 0;
-  margin-bottom: var(--space-m);
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -258,4 +250,13 @@ h6 {
   &:hover {
     background-color: var(--token-color-colour-brand-purple);
   }
+}
+
+/* Stuff that should be in a component */
+
+.site-header {
+  background-color: var(--token-color-colour-background-primary);
+  box-shadow: inset 0px -1px 0px var(--token-color-colour-border-minimal);
+  padding: var(--space-s) 0;
+  margin-bottom: var(--space-m);
 }

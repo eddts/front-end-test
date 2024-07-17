@@ -80,6 +80,7 @@ export const useHolidayFilter = (
   };
 };
 
+// Could count these as we do this for better labels
 export const useHotelFacilitiesFilters = (
   holidays: Holiday[]
 ): FilterOption[] => {
@@ -95,6 +96,8 @@ export const useHotelFacilitiesFilters = (
   return result;
 };
 
+// Could do same as above and derive from data but it's actually a bit inconsistant
+// Some are missing and some have random strings
 export const useHotelStarRatingFilters = (): FilterOption[] => {
   return [
     {

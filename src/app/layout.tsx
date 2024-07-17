@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <header className="site-header">
-          <div className={`wrapper`}>
+          <div className="wrapper">
             <Link href="/">
               <Image
                 src="/vah-logo.svg"
