@@ -1,14 +1,13 @@
 export interface HolidayFilterModel {
   pricePerPerson: {
-    min: number;
-    max: number;
+    min: number | null;
+    max: number | null;
   };
   hotelFacilities: string[];
-  starRating: {
-    1: boolean;
-    2: boolean;
-    3: boolean;
-    4: boolean;
-    5: boolean;
-  };
+  starRating: string[];
+}
+
+export interface FilterOption {
+  label: string;
+  value: string;
 }

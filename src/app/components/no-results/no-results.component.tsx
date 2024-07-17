@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./no-results.module.css";
 
-export default async function NoResults({
+export default function NoResults({
   onClear,
   showClear,
 }: {

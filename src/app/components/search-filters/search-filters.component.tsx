@@ -1,55 +1,109 @@
 import { Holiday } from "@/types/booking";
 import { HolidayFilterModel } from "@/types/filter";
-import { useHotelFacilitiesFilters } from "@/utils/hooks";
+import {
+  useHotelFacilitiesFilters,
+  useHotelStarRatingFilters,
+} from "@/utils/client.hooks";
+import {
+  ChangeEvent,
+  Dispatch,
+  FocusEvent,
+  SetStateAction,
+  useCallback,
+} from "react";
 import styles from "./search-filters.module.css";
 
-export default async function SearchFiltersComponent({
-  onChange,
+// https://www.30secondsofcode.org/js/s/toggle-array-element/
+const toggleElement = <T,>(arr: T[], val: T) =>
+  arr.includes(val) ? arr.filter((el) => el !== val) : [...arr, val];
+
+export default function SearchFiltersComponent({
   holidays,
+  filters,
+  setFilters,
 }: {
-  onChange: (filters: HolidayFilterModel) => void;
+  filters: HolidayFilterModel;
+  setFilters: Dispatch<SetStateAction<HolidayFilterModel>>;
   holidays: Holiday[];
 }) {
   const facilitiesFilters = useHotelFacilitiesFilters(holidays);
+  const starRatingFilters = useHotelStarRatingFilters();
+
+  const onBlurPrice = useCallback(
+    (e: FocusEvent<HTMLInputElement, Element>) => {
+      setFilters((prevState) => {
+        return {
+          ...prevState,
+          pricePerPerson: {
+            ...prevState.pricePerPerson,
+            [e.target.name]: parseInt(e.target.value),
+          },
+        };
+      });
+    },
+    [setFilters]
+  );
+
+  const onCheck = useCallback(
+    (
+      e: ChangeEvent<HTMLInputElement>,
+      key: "starRating" | "hotelFacilities"
+    ) => {
+      setFilters((prevState) => {
+        return {
+          ...prevState,
+          [key]: toggleElement(prevState[key], e.target.value),
+        };
+      });
+    },
+    [setFilters]
+  );
+
+  const onCheckStarRating = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => onCheck(e, "starRating"),
+    [onCheck]
+  );
+
+  const onCheckHotelFacilities = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => onCheck(e, "hotelFacilities"),
+    [onCheck]
+  );
 
   return (
-    <nav className={styles.searchFilters}>
+    <>
       <h1 className={styles.title}>Filter holidays</h1>
 
       <section className={styles.section}>
         <h2>Price per person</h2>
         <label className={styles.input} htmlFor="min">
           Min
-          <input name="min" id="min" type="number" />
+          <input name="min" id="min" type="number" onBlur={onBlurPrice} />
         </label>
         <label className={styles.input} htmlFor="max">
           Max
-          <input name="max" id="max" type="number" />
+          <input name="max" id="max" type="number" onBlur={onBlurPrice} />
         </label>
       </section>
 
       <section className={styles.section}>
         <h2>Star rating</h2>
-        <label className={styles.checkbox} htmlFor="1star">
-          1 star
-          <input type="checkbox" name="1star" id="1star" />
-        </label>
-        <label className={styles.checkbox} htmlFor="2star">
-          2 star
-          <input type="checkbox" name="2star" id="2star" />
-        </label>
-        <label className={styles.checkbox} htmlFor="3star">
-          3 star
-          <input type="checkbox" name="3star" id="3star" />
-        </label>
-        <label className={styles.checkbox} htmlFor="4star">
-          4 star
-          <input type="checkbox" name="4star" id="4star" />
-        </label>
-        <label className={styles.checkbox} htmlFor="5star">
-          5 star
-          <input type="checkbox" name="5star" id="5star" />
-        </label>
+
+        {starRatingFilters.map((filter) => (
+          <label
+            key={filter.value}
+            className={styles.checkbox}
+            htmlFor={filter.value}
+          >
+            {filter.label}
+            <input
+              type="checkbox"
+              name={filter.value}
+              id={filter.value}
+              value={filter.value}
+              onChange={onCheckStarRating}
+            />
+          </label>
+        ))}
       </section>
 
       {facilitiesFilters.length > 0 && (
@@ -62,11 +116,18 @@ export default async function SearchFiltersComponent({
               htmlFor={filter.value}
             >
               {filter.label}
-              <input type="checkbox" name={filter.value} id={filter.value} />
+              <input
+                type="checkbox"
+                name={filter.value}
+                id={filter.value}
+                value={filter.value}
+                onChange={onCheckHotelFacilities}
+              />
             </label>
           ))}
         </section>
       )}
-    </nav>
+      <pre>{JSON.stringify(filters, null, 2)}</pre>
+    </>
   );
 }

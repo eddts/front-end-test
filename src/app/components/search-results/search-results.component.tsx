@@ -1,7 +1,7 @@
 import SearchListingComponent from "@/app/components/search-listing/search-listing.component";
 import { BookingResponse } from "@/types/booking";
 import { SearchBody, SearchParams } from "@/types/search";
-import { useSearchBody } from "@/utils/hooks";
+import { useSearchBody } from "@/utils/server.hooks";
 
 async function getData(body: SearchBody) {
   const res = await fetch(

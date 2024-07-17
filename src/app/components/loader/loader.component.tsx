@@ -1,6 +1,6 @@
 import styles from "./loader.module.css";
 
-export default async function Loader({
+export default function Loader({
   message = "Loading, please wait",
 }: {
   message?: string;
