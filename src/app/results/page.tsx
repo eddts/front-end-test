@@ -1,19 +1,21 @@
-import { Suspense } from 'react';
-import SearchResultsComponent from '../components/search-results/search-results.component'
-import Loading from './loading';
+import SearchResultsComponent from "@/app/components/search-results/search-results.component";
+import Loading from "@/app/results/loading";
+import { SearchParams } from "@/types/search";
+import { Suspense } from "react";
+import styles from "./page.module.css";
 
 export default function Results({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: SearchParams;
 }) {
   return (
     <>
-      <h1>Search results</h1>
+      <h1 className={styles.title}>Search results</h1>
 
       <Suspense fallback={<Loading />}>
         <SearchResultsComponent searchParams={searchParams} />
       </Suspense>
     </>
-  )
+  );
 }
