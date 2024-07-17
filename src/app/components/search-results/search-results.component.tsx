@@ -4,8 +4,6 @@ import { SearchBody, SearchParams } from "@/types/search";
 import { useSearchBody } from "@/utils/hooks";
 
 async function getData(body: SearchBody) {
-  console.log(body);
-
   const res = await fetch(
     "https://www.virginholidays.co.uk/cjs-search-api/search",
     {

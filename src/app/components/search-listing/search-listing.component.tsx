@@ -29,15 +29,14 @@ export default function SearchListingComponent({
 
   return (
     <>
-      <h2>{filteredHolidays.length} results found</h2>
+      <h2 className={styles.title}>{filteredHolidays.length} results found</h2>
 
-      {/* <pre>{JSON.stringify(results, undefined, 2)}</pre> */}
       <SearchFiltersComponent
         holidays={holidays}
         onChange={setHolidayFilters}
       />
 
-      <ol className={styles.searchListing}>
+      <ol className={styles.list}>
         {filteredHolidays.map((holiday, idx: number) => {
           return (
             <li key={idx}>

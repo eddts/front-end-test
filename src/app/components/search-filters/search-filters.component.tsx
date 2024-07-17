@@ -1,5 +1,6 @@
 import { Holiday } from "@/types/booking";
 import { HolidayFilterModel } from "@/types/filter";
+import { useHotelFacilitiesFilters } from "@/utils/hooks";
 import styles from "./search-filters.module.css";
 
 export default async function SearchFiltersComponent({
@@ -9,6 +10,8 @@ export default async function SearchFiltersComponent({
   onChange: (filters: HolidayFilterModel) => void;
   holidays: Holiday[];
 }) {
+  const facilitiesFilters = useHotelFacilitiesFilters(holidays);
+
   return (
     <nav className={styles.searchFilters}>
       <h1 className={styles.title}>Filter holidays</h1>
@@ -23,10 +26,6 @@ export default async function SearchFiltersComponent({
           Max
           <input name="max" id="max" type="number" />
         </label>
-      </section>
-
-      <section className={styles.section}>
-        <h2>Hotel facilities</h2>
       </section>
 
       <section className={styles.section}>
@@ -52,6 +51,22 @@ export default async function SearchFiltersComponent({
           <input type="checkbox" name="5star" id="5star" />
         </label>
       </section>
+
+      {facilitiesFilters.length > 0 && (
+        <section className={styles.section}>
+          <h2>Hotel facilities</h2>
+          {facilitiesFilters.map((filter) => (
+            <label
+              key={filter.value}
+              className={styles.checkbox}
+              htmlFor={filter.value}
+            >
+              {filter.label}
+              <input type="checkbox" name={filter.value} id={filter.value} />
+            </label>
+          ))}
+        </section>
+      )}
     </nav>
   );
 }
