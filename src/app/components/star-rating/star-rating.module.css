@@ -1,0 +1,45 @@
+.starRating {
+  display: flex;
+}
+
+.star {
+  width: var(--space-m);
+  height: var(--space-m);
+  animation-name: zoomIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  fill: var(--token-color-colour-brand-red);
+}
+
+.delay0 {
+  composes: star;
+  animation-delay: 0s;
+}
+.delay1 {
+  composes: star;
+  animation-delay: 0.25s;
+}
+.delay2 {
+  composes: star;
+  animation-delay: 0.5s;
+}
+.delay3 {
+  composes: star;
+  animation-delay: 0.75s;
+}
+.delay4 {
+  composes: star;
+  animation-delay: 1s;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

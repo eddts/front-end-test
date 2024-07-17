@@ -75,7 +75,7 @@ export default function SearchFiltersComponent({
 
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Price per person</h2>
-        <label className={styles.label} htmlFor="min">
+        <label className={styles.inputLabel} htmlFor="min">
           Min
         </label>
         <input
@@ -87,7 +87,7 @@ export default function SearchFiltersComponent({
           onChange={onChangePrice}
         />
 
-        <label className={styles.label} htmlFor="max">
+        <label className={styles.inputLabel} htmlFor="max">
           Max
         </label>
         <input
@@ -146,7 +146,6 @@ export default function SearchFiltersComponent({
           ))}
         </section>
       )}
-      <pre>{JSON.stringify(filters, null, 2)}</pre>
     </>
   );
 }

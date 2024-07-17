@@ -120,44 +120,44 @@ h6 {
 
 /* Utopian typography and space */
 
-/* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+/* @link https://utopia.fyi/type/calculator?c=320,12,1.2,1240,16,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
 :root {
-  --step--2: clamp(0.6944rem, 0.6577rem + 0.1836vw, 0.8rem);
-  --step--1: clamp(0.8333rem, 0.7754rem + 0.2899vw, 1rem);
-  --step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
-  --step-1: clamp(1.2rem, 1.0739rem + 0.6304vw, 1.5625rem);
-  --step-2: clamp(1.44rem, 1.2615rem + 0.8924vw, 1.9531rem);
-  --step-3: clamp(1.728rem, 1.4799rem + 1.2407vw, 2.4414rem);
-  --step-4: clamp(2.0736rem, 1.7334rem + 1.7011vw, 3.0518rem);
-  --step-5: clamp(2.4883rem, 2.027rem + 2.3067vw, 3.8147rem);
+  --step--2: clamp(0.5208rem, 0.4794rem + 0.2072vw, 0.64rem);
+  --step--1: clamp(0.625rem, 0.5641rem + 0.3043vw, 0.8rem);
+  --step-0: clamp(0.75rem, 0.663rem + 0.4348vw, 1rem);
+  --step-1: clamp(0.9rem, 0.7783rem + 0.6087vw, 1.25rem);
+  --step-2: clamp(1.08rem, 0.9122rem + 0.8391vw, 1.5625rem);
+  --step-3: clamp(1.296rem, 1.0674rem + 1.1428vw, 1.9531rem);
+  --step-4: clamp(1.5552rem, 1.247rem + 1.5412vw, 2.4414rem);
+  --step-5: clamp(1.8662rem, 1.4539rem + 2.0618vw, 3.0518rem);
 }
 
-/* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+/* @link https://utopia.fyi/space/calculator?c=320,12,1.2,1240,16,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
 :root {
-  --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087vw, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4565rem + 0.2174vw, 0.625rem);
-  --space-xs: clamp(0.75rem, 0.6848rem + 0.3261vw, 0.9375rem);
-  --space-s: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
-  --space-m: clamp(1.5rem, 1.3696rem + 0.6522vw, 1.875rem);
-  --space-l: clamp(2rem, 1.8261rem + 0.8696vw, 2.5rem);
-  --space-xl: clamp(3rem, 2.7391rem + 1.3043vw, 3.75rem);
-  --space-2xl: clamp(4rem, 3.6522rem + 1.7391vw, 5rem);
-  --space-3xl: clamp(6rem, 5.4783rem + 2.6087vw, 7.5rem);
+  --space-3xs: clamp(0.1875rem, 0.1658rem + 0.1087vw, 0.25rem);
+  --space-2xs: clamp(0.375rem, 0.3315rem + 0.2174vw, 0.5rem);
+  --space-xs: clamp(0.5625rem, 0.4973rem + 0.3261vw, 0.75rem);
+  --space-s: clamp(0.75rem, 0.663rem + 0.4348vw, 1rem);
+  --space-m: clamp(1.125rem, 0.9946rem + 0.6522vw, 1.5rem);
+  --space-l: clamp(1.5rem, 1.3261rem + 0.8696vw, 2rem);
+  --space-xl: clamp(2.25rem, 1.9891rem + 1.3043vw, 3rem);
+  --space-2xl: clamp(3rem, 2.6522rem + 1.7391vw, 4rem);
+  --space-3xl: clamp(4.5rem, 3.9783rem + 2.6087vw, 6rem);
 
   /* One-up pairs */
-  --space-3xs-2xs: clamp(0.25rem, 0.1196rem + 0.6522vw, 0.625rem);
-  --space-2xs-xs: clamp(0.5rem, 0.3478rem + 0.7609vw, 0.9375rem);
-  --space-xs-s: clamp(0.75rem, 0.5761rem + 0.8696vw, 1.25rem);
-  --space-s-m: clamp(1rem, 0.6957rem + 1.5217vw, 1.875rem);
-  --space-m-l: clamp(1.5rem, 1.1522rem + 1.7391vw, 2.5rem);
-  --space-l-xl: clamp(2rem, 1.3913rem + 3.0435vw, 3.75rem);
-  --space-xl-2xl: clamp(3rem, 2.3043rem + 3.4783vw, 5rem);
-  --space-2xl-3xl: clamp(4rem, 2.7826rem + 6.087vw, 7.5rem);
+  --space-3xs-2xs: clamp(0.1875rem, 0.0788rem + 0.5435vw, 0.5rem);
+  --space-2xs-xs: clamp(0.375rem, 0.2446rem + 0.6522vw, 0.75rem);
+  --space-xs-s: clamp(0.5625rem, 0.4103rem + 0.7609vw, 1rem);
+  --space-s-m: clamp(0.75rem, 0.4891rem + 1.3043vw, 1.5rem);
+  --space-m-l: clamp(1.125rem, 0.8207rem + 1.5217vw, 2rem);
+  --space-l-xl: clamp(1.5rem, 0.9783rem + 2.6087vw, 3rem);
+  --space-xl-2xl: clamp(2.25rem, 1.6413rem + 3.0435vw, 4rem);
+  --space-2xl-3xl: clamp(3rem, 1.9565rem + 5.2174vw, 6rem);
 
   /* Custom pairs */
-  --space-s-l: clamp(1rem, 0.4783rem + 2.6087vw, 2.5rem);
+  --space-s-l: clamp(0.75rem, 0.3152rem + 2.1739vw, 2rem);
 }
 
 /* Global */
@@ -174,6 +174,26 @@ a {
   color: var(--token-color-colour-brand-red);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Gotham, Gotham-Medium";
+  font-size: var(--step-0);
+  font-weight: normal;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--token-color-colour-brand-red);
+  outline-offset: 2px;
+}
+
 /* Utilities */
 
 .wrapper {
@@ -184,6 +204,16 @@ a {
   padding-right: var(--space-m);
 }
 
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 /* Stuff that should be in a component */
 
 .site-header {
@@ -191,4 +221,23 @@ a {
   box-shadow: inset 0px -1px 0px var(--token-color-colour-border-minimal);
   padding: var(--space-s) 0;
   margin-bottom: var(--space-m);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xs) var(--space-s);
+  border: 0;
+  background: var(--token-color-colour-brand-red);
+  color: #fff;
+  text-decoration: none;
+  transition: 0.25s ease background-color;
+  border-radius: 0.25rem;
+  text-align: center;
+  font-family: "Gotham, Gotham-Medium";
+}
+
+.btn:hover {
+  background-color: var(--token-color-colour-brand-purple);
 }

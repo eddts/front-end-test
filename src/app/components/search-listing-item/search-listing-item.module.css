@@ -1,5 +1,84 @@
-.searchListingItem {
-  border: 1px solid red;
-  padding: 1rem;
-  margin: 0 0 1rem;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  min-height: 15rem;
+
+  background: var(--token-color-colour-background-primary);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.125);
+
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+.figure {
+  position: relative;
+}
+
+.figure img {
+  object-fit: cover;
+}
+
+.body {
+  padding: var(--space-m);
+}
+
+.title {
+  font-size: var(--step-2);
+  line-height: 1.25;
+  margin-bottom: var(--space-2xs);
+  color: var(--token-color-colour-brand-red);
+}
+
+.subtitle {
+  margin-bottom: var(--space-s);
+}
+
+.list {
+  padding: 0 0 0 var(--space-xs);
+  list-style: disc;
+}
+
+.list li::marker {
+  color: var(--token-color-colour-brand-purple);
+}
+
+.actions {
+  padding: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.rating {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pricePP {
+  font-size: var(--step-2);
+  color: var(--token-color-colour-brand-red);
+}
+
+.priceTotal {
+  line-height: 1.25;
+  margin-bottom: var(--space-2xs);
+}
+
+.btn {
+  /* width: 100%; */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

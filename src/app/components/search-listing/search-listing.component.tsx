@@ -21,8 +21,6 @@ export default function SearchListingComponent({
 
   return (
     <>
-      <h2 className={styles.title}>{filteredHolidays.length} results found</h2>
-
       <div className={styles.grid}>
         <nav className={styles.nav}>
           <SearchFiltersComponent
@@ -33,6 +31,9 @@ export default function SearchListingComponent({
         </nav>
 
         <div>
+          <h2 className={styles.title}>
+            {filteredHolidays.length} results found
+          </h2>
           {filteredHolidays.length > 0 ? (
             <ol className={styles.list}>
               {filteredHolidays.map((holiday, idx: number) => {

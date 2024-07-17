@@ -1,8 +1,5 @@
 .title {
-  font-family: "Gotham, Gotham-Medium";
   font-size: var(--step-3);
   line-height: 1.25;
-  margin-bottom: var(--space-s);
-
-  color: var(--token-color-colour-brand-red);
+  margin-bottom: var(--space-m);
 }

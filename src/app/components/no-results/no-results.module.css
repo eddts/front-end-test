@@ -1,2 +1,4 @@
-.noResults {
+.title {
+  font-size: var(--step-2);
+  margin-bottom: var(--space-s);
 }
