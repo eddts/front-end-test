@@ -26,7 +26,9 @@ export default function SearchListingItemComponent({
         <h2 className={styles.subtitle}>{holiday.hotel.boardBasis}</h2>
         <ul className={styles.list}>
           {holiday.hotel.content.atAGlance.map((item, idx) => (
-            <li key={idx}>{item}</li>
+            <li key={idx} className={styles.listItem}>
+              {item}
+            </li>
           ))}
         </ul>
       </div>
@@ -37,7 +39,7 @@ export default function SearchListingItemComponent({
         <div>
           <h3 className={styles.pricePP}>£{holiday.pricePerPerson}pp</h3>
           <p className={styles.priceTotal}>Total: £{holiday.totalPrice}</p>
-          <Link className={`btn ${styles.btn}`} href="#">
+          <Link className={`btn`} href="#">
             View details
           </Link>
         </div>

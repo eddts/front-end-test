@@ -45,7 +45,7 @@ export default function SearchListingComponent({
               })}
             </ol>
           ) : (
-            <NoResults showClear={filters !== null} onClear={resetFilters} />
+            <NoResults onClear={resetFilters} />
           )}
         </div>
       </div>

@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
-export default function Error({ error }: {
+export default function Error({
+  error,
+}: {
   error: Error & { digest?: string };
 }) {
   useEffect(() => {
@@ -11,7 +13,7 @@ export default function Error({ error }: {
   }, [error]);
 
   return (
-    <section className={`wrapper`}>
+    <section className="wrapper">
       <h1>Something went wrong!</h1>
       <Link href="/">Return home</Link>
     </section>

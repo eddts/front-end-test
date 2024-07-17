@@ -28,7 +28,6 @@
 
 .title {
   font-size: var(--step-2);
-  line-height: 1.25;
   margin-bottom: var(--space-2xs);
   color: var(--token-color-colour-brand-red);
 }
@@ -42,7 +41,7 @@
   list-style: disc;
 }
 
-.list li::marker {
+.listItem::marker {
   color: var(--token-color-colour-brand-purple);
 }
 
@@ -65,12 +64,7 @@
 }
 
 .priceTotal {
-  line-height: 1.25;
   margin-bottom: var(--space-2xs);
-}
-
-.btn {
-  /* width: 100%; */
 }
 
 @keyframes fadeIn {

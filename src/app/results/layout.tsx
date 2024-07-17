@@ -3,5 +3,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <section className="wrapper">{children}</section>;
+  return <main className="wrapper">{children}</main>;
 }

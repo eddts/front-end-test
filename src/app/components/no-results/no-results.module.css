@@ -1,4 +1,11 @@
-.title {
-  font-size: var(--step-2);
+.message {
   margin-bottom: var(--space-s);
+  padding: var(--space-m);
+  background: var(--token-color-colour-background-secondary);
+  border-left: 0.25rem solid var(--token-color-colour-text-error);
+  border-radius: 0.25rem;
+}
+
+.btn {
+  margin-right: var(--space-m);
 }

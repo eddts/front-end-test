@@ -3,7 +3,6 @@
 
 .title {
   font-size: var(--step-2);
-  line-height: 1.25;
   margin-bottom: var(--space-s);
   color: var(--token-color-colour-brand-red);
 }
@@ -14,27 +13,28 @@
 
 .sectionTitle {
   font-size: var(--step-1);
-  line-height: 1.25;
   margin-bottom: var(--space-2xs);
 }
 
 .inputLabel {
   display: block;
-  font-size: var(--step--0);
   margin-bottom: var(--space-3xs);
 }
 
 .input {
   display: block;
+  border: 1px solid var(--token-color-colour-border-decorative);
+  border-radius: 0.25rem;
   margin-bottom: var(--space-2xs);
+  width: 100%;
+  padding: var(--space-3xs) var(--space-2xs);
 }
 
 .checkboxLabel {
   display: flex;
   align-items: center;
   gap: var(--space-2xs);
-  margin-bottom: var(--space-3xs);
-  font-size: var(--step-0);
+  margin-bottom: var(--space-2xs);
   transition: 0.25s ease color;
 }
 
@@ -42,9 +42,41 @@
   color: var(--token-color-colour-brand-red);
 }
 
+.checkboxLabel:hover .checkbox {
+  border-color: currentColor;
+}
+
+/*
+https://moderncss.dev/pure-css-custom-checkbox-style/
+*/
 .checkbox {
+  appearance: none;
+  display: grid;
+  place-content: center;
+
+  background: none;
+  color: currentColor;
+
+  height: var(--space-m);
+  width: var(--space-m);
+
+  flex-shrink: 0;
+  border: 1px solid var(--token-color-colour-border-decorative);
+  border-radius: 0.25rem;
+
+  transition: border-color 0.25s ease;
+}
+
+.checkbox::before {
+  content: "";
   height: var(--space-s);
   width: var(--space-s);
-  accent-color: var(--token-color-colour-brand-red);
-  flex-shrink: 0;
+  border-radius: 0.25rem;
+  transform: scale(0);
+  transition: 0.125s transform ease-in-out;
+  background: var(--token-color-colour-brand-red);
+}
+
+.checkbox:checked::before {
+  transform: scale(1);
 }

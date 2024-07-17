@@ -166,6 +166,7 @@ body {
   font-family: "Gotham, Gotham-Book";
   font-weight: normal;
   font-size: var(--step-0);
+  line-height: 1.5;
   color: var(--token-color-colour-text-primary);
   background-color: var(--token-color-colour-background-primary);
 }
@@ -180,9 +181,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Gotham, Gotham-Medium";
   font-size: var(--step-0);
-  font-weight: normal;
+  font-weight: 600;
 }
 
 :focus {
@@ -235,7 +235,7 @@ h6 {
   transition: 0.25s ease background-color;
   border-radius: 0.25rem;
   text-align: center;
-  font-family: "Gotham, Gotham-Medium";
+  font-weight: 600;
 }
 
 .btn:hover {
