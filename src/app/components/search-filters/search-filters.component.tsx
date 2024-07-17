@@ -71,43 +71,47 @@ export default function SearchFiltersComponent({
 
   return (
     <>
-      <h1 className={styles.title}>Filter holidays</h1>
+      <h1 className={styles.title}>Filter by...</h1>
 
       <section className={styles.section}>
-        <h2>Price per person</h2>
-        <label className={styles.input} htmlFor="min">
+        <h2 className={styles.sectionTitle}>Price per person</h2>
+        <label className={styles.label} htmlFor="min">
           Min
-          <input
-            name="min"
-            id="min"
-            type="number"
-            value={filters.pricePerPerson.min ?? ""}
-            onChange={onChangePrice}
-          />
         </label>
-        <label className={styles.input} htmlFor="max">
+        <input
+          className={styles.input}
+          name="min"
+          id="min"
+          type="number"
+          value={filters.pricePerPerson.min ?? ""}
+          onChange={onChangePrice}
+        />
+
+        <label className={styles.label} htmlFor="max">
           Max
-          <input
-            name="max"
-            id="max"
-            type="number"
-            value={filters.pricePerPerson.max ?? ""}
-            onChange={onChangePrice}
-          />
         </label>
+        <input
+          className={styles.input}
+          name="max"
+          id="max"
+          type="number"
+          value={filters.pricePerPerson.max ?? ""}
+          onChange={onChangePrice}
+        />
       </section>
 
       <section className={styles.section}>
-        <h2>Star rating</h2>
+        <h2 className={styles.sectionTitle}>Star rating</h2>
 
         {starRatingFilters.map((filter) => (
           <label
             key={filter.value}
-            className={styles.checkbox}
+            className={styles.checkboxLabel}
             htmlFor={filter.value}
           >
             <input
               type="checkbox"
+              className={styles.checkbox}
               name={filter.value}
               id={filter.value}
               value={filter.value}
@@ -121,15 +125,16 @@ export default function SearchFiltersComponent({
 
       {facilitiesFilters.length > 0 && (
         <section className={styles.section}>
-          <h2>Hotel facilities</h2>
+          <h2 className={styles.sectionTitle}>Hotel facilities</h2>
           {facilitiesFilters.map((filter) => (
             <label
               key={filter.value}
-              className={styles.checkbox}
+              className={styles.checkboxLabel}
               htmlFor={filter.value}
             >
               <input
                 type="checkbox"
+                className={styles.checkbox}
                 name={filter.value}
                 id={filter.value}
                 value={filter.value}
