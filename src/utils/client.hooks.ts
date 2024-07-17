@@ -1,6 +1,12 @@
 import { Holiday } from "@/types/booking";
 import { FilterOption, HolidayFilterModel } from "@/types/filter";
-import { Dispatch, SetStateAction, useCallback, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 
 const defaultState = {
   pricePerPerson: {
@@ -16,6 +22,7 @@ export const useHolidayFilter = (
 ): {
   holidays: Holiday[];
   filters: HolidayFilterModel;
+  hasActiveFilters: boolean;
   setFilters: Dispatch<SetStateAction<HolidayFilterModel>>;
   resetFilters: () => void;
 } => {
@@ -24,8 +31,17 @@ export const useHolidayFilter = (
     () => setFilters(defaultState),
     [setFilters]
   );
+  // In practice would do some comparison of the defaultState for scalability
+  const hasActiveFilters = useMemo(() => {
+    return (
+      filters.starRating.length > 0 ||
+      filters.hotelFacilities.length > 0 ||
+      filters.pricePerPerson.min !== null ||
+      filters.pricePerPerson.max !== null
+    );
+  }, [filters]);
 
-  // Do filtering - this is incredibly simplistic and verbose, in reality would probably use something like fuse.js
+  // Do filtering - this is incredibly simplistic and specific, obviously would identify types of filter and abstract
   const filteredHolidays: Holiday[] = holidays.filter((holiday) => {
     let include = [];
 
@@ -37,7 +53,7 @@ export const useHolidayFilter = (
       include.push(holiday.pricePerPerson <= filters.pricePerPerson.max);
     }
 
-    // Candidate for refactor - cyclomatic complexity!!
+    // Candidate for refactor - cyclomatic complexity
     if (filters.hotelFacilities.length > 0) {
       include.push(
         filters.hotelFacilities.every((item) =>
@@ -55,7 +71,13 @@ export const useHolidayFilter = (
     return include.every(Boolean);
   });
 
-  return { holidays: filteredHolidays, filters, setFilters, resetFilters };
+  return {
+    holidays: filteredHolidays,
+    filters,
+    setFilters,
+    resetFilters,
+    hasActiveFilters,
+  };
 };
 
 export const useHotelFacilitiesFilters = (

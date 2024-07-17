@@ -17,6 +17,7 @@ export default function SearchListingComponent({
     filters,
     setFilters,
     resetFilters,
+    hasActiveFilters,
   } = useHolidayFilter(holidays);
 
   return (
@@ -24,8 +25,10 @@ export default function SearchListingComponent({
       <div className={styles.grid}>
         <nav className={styles.nav}>
           <SearchFiltersComponent
+            hasActiveFilters={hasActiveFilters}
             filters={filters}
             setFilters={setFilters}
+            resetFilters={resetFilters}
             holidays={holidays}
           />
         </nav>
@@ -45,7 +48,7 @@ export default function SearchListingComponent({
               })}
             </ol>
           ) : (
-            <NoResults onClear={resetFilters} />
+            <NoResults showClear={hasActiveFilters} onClear={resetFilters} />
           )}
         </div>
       </div>

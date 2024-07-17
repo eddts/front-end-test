@@ -9,7 +9,7 @@
   animation-duration: 0.5s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
-  fill: var(--token-color-colour-brand-red);
+  fill: var(--token-color-colour-brand-purple);
 }
 
 .delay0 {

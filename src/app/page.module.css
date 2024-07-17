@@ -1,5 +1,7 @@
-.list { }
+.list {
+  margin-top: var(--space-m);
+}
 
 .listItem {
-    margin-bottom: 12px;
+  margin-bottom: var(--space-s);
 }

@@ -173,6 +173,12 @@ body {
 
 a {
   color: var(--token-color-colour-brand-red);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 h1,
@@ -214,6 +220,18 @@ h6 {
   width: 1px;
 }
 
+.text-link {
+  border: 0;
+  background: transparent;
+  color: var(--token-color-colour-brand-red);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 /* Stuff that should be in a component */
 
 .site-header {
@@ -236,8 +254,8 @@ h6 {
   border-radius: 0.25rem;
   text-align: center;
   font-weight: 600;
-}
 
-.btn:hover {
-  background-color: var(--token-color-colour-brand-purple);
+  &:hover {
+    background-color: var(--token-color-colour-brand-purple);
+  }
 }

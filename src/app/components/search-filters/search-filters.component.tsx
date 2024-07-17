@@ -21,10 +21,14 @@ export default function SearchFiltersComponent({
   holidays,
   filters,
   setFilters,
+  resetFilters,
+  hasActiveFilters,
 }: {
+  holidays: Holiday[];
   filters: HolidayFilterModel;
   setFilters: Dispatch<SetStateAction<HolidayFilterModel>>;
-  holidays: Holiday[];
+  resetFilters: () => void;
+  hasActiveFilters: boolean;
 }) {
   const facilitiesFilters = useHotelFacilitiesFilters(holidays);
   const starRatingFilters = useHotelStarRatingFilters();
@@ -71,33 +75,46 @@ export default function SearchFiltersComponent({
 
   return (
     <>
-      <h1 className={styles.title}>Filter by...</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Filter by...</h1>
+        {hasActiveFilters && (
+          <button className={`text-link ${styles.btn}`} onClick={resetFilters}>
+            Clear filters
+          </button>
+        )}
+      </div>
 
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Price per person</h2>
-        <label className={styles.inputLabel} htmlFor="min">
-          Min
-        </label>
-        <input
-          className={styles.input}
-          name="min"
-          id="min"
-          type="number"
-          value={filters.pricePerPerson.min ?? ""}
-          onChange={onChangePrice}
-        />
+        <div className={styles.inputGroup}>
+          <div>
+            <label className={styles.inputLabel} htmlFor="min">
+              Min (£)
+            </label>
+            <input
+              className={styles.input}
+              name="min"
+              id="min"
+              type="number"
+              value={filters.pricePerPerson.min ?? ""}
+              onChange={onChangePrice}
+            />
+          </div>
 
-        <label className={styles.inputLabel} htmlFor="max">
-          Max
-        </label>
-        <input
-          className={styles.input}
-          name="max"
-          id="max"
-          type="number"
-          value={filters.pricePerPerson.max ?? ""}
-          onChange={onChangePrice}
-        />
+          <div>
+            <label className={styles.inputLabel} htmlFor="max">
+              Max (£)
+            </label>
+            <input
+              className={styles.input}
+              name="max"
+              id="max"
+              type="number"
+              value={filters.pricePerPerson.max ?? ""}
+              onChange={onChangePrice}
+            />
+          </div>
+        </div>
       </section>
 
       <section className={styles.section}>

@@ -1,10 +1,18 @@
-.searchFilters {
+.header {
+  display: flex;
+  gap: var(--space-s);
+  align-items: center;
+  justify-content: space-between;
 }
 
 .title {
   font-size: var(--step-2);
   margin-bottom: var(--space-s);
   color: var(--token-color-colour-brand-red);
+}
+
+.btn {
+  margin-bottom: var(--space-s);
 }
 
 .section {
@@ -16,6 +24,12 @@
   margin-bottom: var(--space-2xs);
 }
 
+.inputGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-m);
+}
+
 .inputLabel {
   display: block;
   margin-bottom: var(--space-3xs);
@@ -25,7 +39,6 @@
   display: block;
   border: 1px solid var(--token-color-colour-border-decorative);
   border-radius: 0.25rem;
-  margin-bottom: var(--space-2xs);
   width: 100%;
   padding: var(--space-3xs) var(--space-2xs);
 }
@@ -46,9 +59,7 @@
   border-color: currentColor;
 }
 
-/*
-https://moderncss.dev/pure-css-custom-checkbox-style/
-*/
+/* https://sentry.io/answers/how-to-style-a-checkbox-using-css/ */
 .checkbox {
   appearance: none;
   display: grid;
@@ -71,7 +82,7 @@ https://moderncss.dev/pure-css-custom-checkbox-style/
   content: "";
   height: var(--space-s);
   width: var(--space-s);
-  border-radius: 0.25rem;
+  clip-path: polygon(28% 38%, 41% 53%, 75% 24%, 86% 38%, 40% 78%, 15% 50%);
   transform: scale(0);
   transition: 0.125s transform ease-in-out;
   background: var(--token-color-colour-brand-red);

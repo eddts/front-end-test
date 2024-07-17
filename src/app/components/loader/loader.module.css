@@ -1,2 +1,131 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-l);
+}
+
+.messages {
+  padding: 0;
+  list-style: none;
+  width: 50%;
+  text-align: center;
+  display: grid;
+  place-content: center;
+}
+
+.message {
+  grid-area: 1/1;
+  font-size: var(--step-1);
+  font-weight: 600;
+  opacity: 0;
+  animation-name: fadeInOut;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+.message1 {
+  composes: message;
+  animation-delay: 0s;
+}
+.message2 {
+  composes: message;
+  animation-delay: 3s;
+}
+.message3 {
+  composes: message;
+  animation-delay: 6s;
+}
+.message4 {
+  composes: message;
+  animation-delay: 9s;
+}
+.message5 {
+  composes: message;
+  animation-name: fadeIn;
+  animation-delay: 12s;
+}
+
+.btn {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  animation-delay: 12s;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* https://css-loaders.com/colorful/ */
 .loader {
+  width: 8rem;
+  aspect-ratio: 1.154;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  display: grid;
+
+  background: var(--token-color-colour-brand-red);
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  background: inherit;
+  clip-path: inherit;
+  transform-origin: 50% 33%;
+  animation: l7-1 2s infinite;
+}
+
+.loader::before {
+  background: var(--token-color-colour-brand-purple);
+  animation: l7-2 2s infinite 1s;
+}
+
+@keyframes l7-1 {
+  0%,
+  99.9% {
+    transform: scale(1);
+  }
+  50%,
+  99% {
+    transform: scale(0);
+  }
+}
+@keyframes l7-2 {
+  0%,
+  51% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+  }
 }
