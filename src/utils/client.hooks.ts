@@ -1,5 +1,6 @@
 import { Holiday } from "@/types/booking";
 import { FilterOption, HolidayFilterModel } from "@/types/filter";
+import { DEFAULT_HOLIDAY_FILTER_MODEL } from "@/utils/constants";
 import {
   Dispatch,
   SetStateAction,
@@ -8,41 +9,13 @@ import {
   useState,
 } from "react";
 
-const defaultState = {
-  pricePerPerson: {
-    min: null,
-    max: null,
-  },
-  hotelFacilities: [],
-  starRating: [],
-};
-
-export const useHolidayFilter = (
-  holidays: Holiday[]
-): {
-  holidays: Holiday[];
-  filters: HolidayFilterModel;
-  hasActiveFilters: boolean;
-  setFilters: Dispatch<SetStateAction<HolidayFilterModel>>;
-  resetFilters: () => void;
-} => {
-  const [filters, setFilters] = useState<HolidayFilterModel>(defaultState);
-  const resetFilters = useCallback(
-    () => setFilters(defaultState),
-    [setFilters]
-  );
-  // In practice would do some comparison of the defaultState for scalability
-  const hasActiveFilters = useMemo(() => {
-    return (
-      filters.starRating.length > 0 ||
-      filters.hotelFacilities.length > 0 ||
-      filters.pricePerPerson.min !== null ||
-      filters.pricePerPerson.max !== null
-    );
-  }, [filters]);
-
-  // Do filtering - this is incredibly simplistic and specific, obviously would identify types of filter and abstract
-  const filteredHolidays: Holiday[] = holidays.filter((holiday) => {
+// This is incredibly specific, for production would identify types of filter and abstract
+// exported just for testing
+export const filterHolidays = (
+  holidays: Holiday[],
+  filters: HolidayFilterModel
+): Holiday[] => {
+  return holidays.filter((holiday) => {
     let include = [];
 
     if (filters.pricePerPerson.min !== null) {
@@ -70,6 +43,37 @@ export const useHolidayFilter = (
 
     return include.every(Boolean);
   });
+};
+
+export const useHolidayFilter = (
+  holidays: Holiday[]
+): {
+  holidays: Holiday[];
+  filters: HolidayFilterModel;
+  hasActiveFilters: boolean;
+  setFilters: Dispatch<SetStateAction<HolidayFilterModel>>;
+  resetFilters: () => void;
+} => {
+  const [filters, setFilters] = useState<HolidayFilterModel>(
+    DEFAULT_HOLIDAY_FILTER_MODEL
+  );
+  const resetFilters = useCallback(
+    () => setFilters(DEFAULT_HOLIDAY_FILTER_MODEL),
+    [setFilters]
+  );
+
+  // In practice would do some comparison of the DEFAULT_HOLIDAY_FILTER_MODEL for scalability
+  const hasActiveFilters = useMemo(() => {
+    return (
+      filters.starRating.length > 0 ||
+      filters.hotelFacilities.length > 0 ||
+      filters.pricePerPerson.min !== null ||
+      filters.pricePerPerson.max !== null
+    );
+  }, [filters]);
+
+  // Do filtering
+  const filteredHolidays = filterHolidays(holidays, filters);
 
   return {
     holidays: filteredHolidays,
@@ -96,8 +100,8 @@ export const useHotelFacilitiesFilters = (
   return result;
 };
 
-// Could do same as above and derive from data but it's actually a bit inconsistant
-// Some are missing and some have random strings
+// Could do same as above and derive from data but it's actually a bit inconsistant -
+// some holidays are missing starRating altogether and some have random strings
 export const useHotelStarRatingFilters = (): FilterOption[] => {
   return [
     {

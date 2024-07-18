@@ -15,7 +15,7 @@ export interface BookingResponse {
 export interface Holiday {
   totalPrice: number;
   pricePerPerson: number;
-  flyingClubMiles: number;
+  flyingClubMiles?: number; // Missing in API data
   virginPoints: number;
   tierPoints: number;
   departureDate: string;
@@ -38,7 +38,7 @@ export interface Hotel {
 
 export interface HotelContent {
   name: string;
-  vRating: number | string;
+  vRating?: number | string; // Missing in some API data
   hotelDescription: string;
   atAGlance: string[];
   parentLocation: string;
@@ -48,7 +48,7 @@ export interface HotelContent {
   hotelLocation: string[];
   accommodationType: string[];
   hotelFacilities: string[];
-  starRating: number | string;
+  starRating?: number | string; // Missing in some API data
   propertyType: string;
 }
 
