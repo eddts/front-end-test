@@ -1,0 +1,36 @@
+body {
+  font-family: "Gotham, Gotham-Book";
+  font-weight: normal;
+  font-size: var(--step-0);
+  color: var(--token-color-colour-text-primary);
+  background-color: var(--token-color-colour-background-primary);
+}
+
+a {
+  color: var(--token-color-colour-brand-red);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--step-0);
+  font-weight: 600;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--token-color-colour-brand-red);
+  outline-offset: 2px;
+}

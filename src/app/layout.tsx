@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import "./globals.css";
+import "./app.scss";
 
 export const metadata: Metadata = {
   title: "Virgin Atlantic | Front End Coding Test",

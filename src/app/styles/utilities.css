@@ -1,0 +1,87 @@
+.wrapper {
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-m);
+  padding-right: var(--space-m);
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.text-link {
+  border: 0;
+  background: transparent;
+  color: var(--token-color-colour-brand-red);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xs) var(--space-s);
+  border: 0;
+  background: var(--token-color-colour-brand-red);
+  color: var(--token-color-colour-text-inverted-primary);
+  text-decoration: none;
+  transition: 0.25s ease background-color;
+  border-radius: 0.25rem;
+  text-align: center;
+  font-weight: 600;
+
+  &:hover {
+    background-color: var(--token-color-colour-brand-purple);
+  }
+}
+
+/* Stuff that should be in a component */
+
+.site-header {
+  background-color: var(--token-color-colour-background-primary);
+  box-shadow: inset 0px -1px 0px var(--token-color-colour-border-minimal);
+  padding: var(--space-s) 0;
+  margin-bottom: var(--space-m);
+}
+
+.prose {
+  h1 {
+    font-size: var(--step-2);
+    margin-bottom: var(--space-s);
+  }
+
+  h2 {
+    font-size: var(--step-1);
+    margin-bottom: var(--space-s);
+  }
+
+  p {
+    margin-bottom: var(--space-s);
+  }
+
+  ul,
+  ol {
+    padding: 0 0 0 var(--space-s);
+    list-style: disc;
+  }
+
+  li {
+    margin-bottom: var(--space-2xs);
+  }
+
+  li::marker {
+    color: var(--token-color-colour-brand-red);
+  }
+}
