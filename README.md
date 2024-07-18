@@ -7,7 +7,7 @@
 5. There are no media queries - again just a time thing. Utopia does eliminate a lot of the faff of sizing, but doesn't help with layout so I'd suggest viewing on at least a 1240px screen.
 6. I only set up one test for the core filtering to satisfy the requirement - I'd have loved to include a component one but ran out of time.
 7. I'd usually use a framework like react-hook-form for the filter form but did it in a pretty old school manual way just to show that I know how to!
-8. I initially assumed it would be server side filtering - for this I'd use SWR or more likely [react-query](https://tanstack.com/query/latest/docs/framework/react/overview). You can see I started doing the path of extracting some of the API request stuff but then bailed when I realised that it was all going to be client side.
+8. I initially assumed it would be api based filtering - for this I'd use SWR or more likely [react-query](https://tanstack.com/query/latest/docs/framework/react/overview). You can see I started doing the path of extracting some of the API request stuff but then bailed when I realised that it was all going to be client side.
 9. I would usually use a lib like [io-ts](https://github.com/gcanti/io-ts) to prevent bad data coming into the app - I did find a few places where the types didn't align with what was coming over the wire, but I've just worked around this by modifying the type defs.
 
 # Virgin Atlantic / Virgin Atlantic Holidays ~ Holiday Search Results (Front-end test)
