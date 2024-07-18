@@ -45,36 +45,39 @@ export default function Home() {
 
   return (
     <main className="wrapper">
-      <h1>Holiday Search Test</h1>
-      <p>Please review the `README.md` file for full instructions.</p>
-      <p>We have provided some sample searches below:</p>
-
-      <ul className={styles.list}>
-        {samples?.map((sample: BookingRequest, idx: number) => {
-          return (
-            <li key={idx} className={styles.listItem}>
-              <Link
-                href={`/results?bookingType=${sample?.bookingType}&location=${
-                  sample?.location
-                }&gateway=${sample?.gateway}&departureDate=${
-                  sample?.departureDate
-                }&duration=${sample?.duration}${sample?.partyCompositions
-                  ?.map(
-                    (party: PartyComposition, i: number) =>
-                      `&partyCompositions=a${party?.adults}`
-                  )
-                  .join("&")}`}
-              >
-                {`
+      <div className="prose">
+        <h1 className={styles.title}>Holiday Search Test</h1>
+        <p className={styles.text}>
+          Please review the `README.md` file for full instructions. We have
+          provided some sample searches below:
+        </p>
+        <ul className={styles.list}>
+          {samples?.map((sample: BookingRequest, idx: number) => {
+            return (
+              <li key={idx} className={styles.listItem}>
+                <Link
+                  href={`/results?bookingType=${sample?.bookingType}&location=${
+                    sample?.location
+                  }&gateway=${sample?.gateway}&departureDate=${
+                    sample?.departureDate
+                  }&duration=${sample?.duration}${sample?.partyCompositions
+                    ?.map(
+                      (party: PartyComposition, i: number) =>
+                        `&partyCompositions=a${party?.adults}`
+                    )
+                    .join("&")}`}
+                >
+                  {`
                     ${sample?.location} from ${sample?.gateway} (${
-                  sample?.duration
-                } nights, ${Rooms.prettyFormat(sample?.partyCompositions)}) 
+                    sample?.duration
+                  } nights, ${Rooms.prettyFormat(sample?.partyCompositions)}) 
                   `}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </main>
   );
 }

@@ -86,6 +86,9 @@ export default function SearchFiltersComponent({
 
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Price per person</h2>
+        {/* Would probably favour a range slider here but didn't have time to build it from scratch 
+        and didn't think there was value in showing I could implement it - 
+        it would be very simple to add rc-slider or similar as it wouldn't impact the underlying filtering, just populate our model with the output  */}
         <div className={styles.inputGroup}>
           <div>
             <label className={styles.inputLabel} htmlFor="min">

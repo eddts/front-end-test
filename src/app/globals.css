@@ -260,3 +260,28 @@ h6 {
   padding: var(--space-s) 0;
   margin-bottom: var(--space-m);
 }
+
+.prose {
+  h1 {
+    font-size: var(--step-2);
+    margin-bottom: var(--space-s);
+  }
+
+  p {
+    margin-bottom: var(--space-s);
+  }
+
+  ul,
+  ol {
+    padding: 0 0 0 var(--space-s);
+    list-style: disc;
+  }
+
+  li {
+    margin-bottom: var(--space-2xs);
+  }
+
+  li::marker {
+    color: var(--token-color-colour-brand-purple);
+  }
+}
